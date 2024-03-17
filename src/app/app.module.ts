@@ -7,6 +7,8 @@ import { StoreModule } from '@ngrx/store';
 
 import { counterReducer } from './counter/counter.reducer';
 import { CounterComponent } from './counter/counter.component';
+import { EffectsModule } from '@ngrx/effects';
+import { CounterEffects } from './counter/counter.effects';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,10 @@ import { CounterComponent } from './counter/counter.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ count: counterReducer }, {})
+    StoreModule.forRoot({ count: counterReducer }, {}),
+    EffectsModule.forRoot([
+      CounterEffects,
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]
